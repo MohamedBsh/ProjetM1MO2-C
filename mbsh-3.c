@@ -1,9 +1,8 @@
 /**************************************************************/
 /*  Projet de Programmation Partie I                          */
-/*  Réalisé par : Mohamed-Amine Bousahih                      */
-/*  Numéro etd  : 21500267                                    */    
-/*  Université Paris Diderot                                  */
-/*  Master 1 Mathématiques et Applications                    */
+/*  RÃ©alisÃ© par : Mohamed-Amine Bousahih                      */
+/*  UniversitÃ© Paris Diderot                                  */
+/*  Master 1 MathÃ©matiques et Applications                    */
 /*  Subject : Identification of Common Molecular Subsequences */
 /**************************************************************/
 
@@ -22,20 +21,20 @@ typedef struct // structure qui contient une valeur et son emplacement dans la m
     double value;
 } cell;
 
-typedef struct  // structure qui contient l'élément maximum de la matrice ainsi que son nombre d'occurences.
+typedef struct  // structure qui contient l'Ã©lÃ©ment maximum de la matrice ainsi que son nombre d'occurences.
 {
 	double val_max;
 	int count;
 } cell_max;
 
-struct path  // structure qui contient une structure cell et un pointeur sur la structure suivante. Element de notre liste chainée.
+struct path  // structure qui contient une structure cell et un pointeur sur la structure suivante. Element de notre liste chainÃ©e.
 {
     cell e;
     struct path* next;
 };
 typedef struct path path;
 
-typedef struct  // structure controlant notre liste chainée.
+typedef struct  // structure controlant notre liste chainÃ©e.
 {
     path* tete;
 } cell_liste;
@@ -47,24 +46,24 @@ typedef struct  // structure controlant notre liste chainée.
 /********************************   Pour la matrice de notation   ***************************************/
 
 double** allocation(int l1, int l2); // allocation dynamique de notre matrice de notation. 
-double similarite (char s1, char s2); // renvoie un coefficient de similarité entre deux caractères. 
-double maxQuatrecoeff (double a, double b, double c, double d); // renvoie le coefficient maximal entre 4 valeurs (selon la méthode de calcul de Smith-Waterman).
-double maximum_K (int i, int j, int n, int m, double** mat); // renvoie le max parmi la ligne gauche de mat[i][j], en fonction d'un certain coefficient de délétion.
-double maximum_L (int i, int j, int n, int m, double** mat); // renvoie le max parmi la colonne du haut de mat[i][j], en fonction d'un certain coefficient de délétion.
-void FillMatrix (int n, int m, char s1[n], char s2[m], double** mat); // remplit la matrice de similarité.
-void ShowMatrix (int n, int m,char s1[n], char s2[m], double** mat);  // affiche la matrice de similarité.
+double similarite (char s1, char s2); // renvoie un coefficient de similaritÃ© entre deux caractÃ¨res. 
+double maxQuatrecoeff (double a, double b, double c, double d); // renvoie le coefficient maximal entre 4 valeurs (selon la mÃ©thode de calcul de Smith-Waterman).
+double maximum_K (int i, int j, int n, int m, double** mat); // renvoie le max parmi la ligne gauche de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
+double maximum_L (int i, int j, int n, int m, double** mat); // renvoie le max parmi la colonne du haut de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
+void FillMatrix (int n, int m, char s1[n], char s2[m], double** mat); // remplit la matrice de similaritÃ©.
+void ShowMatrix (int n, int m,char s1[n], char s2[m], double** mat);  // affiche la matrice de similaritÃ©.
 
-/*****************************  Processus de traçage et alignement  ********************************/
+/*****************************  Processus de traÃ§age et alignement  ********************************/
 
 
-cell indicesMaxK (int i ,int j, int n, int m, double** mat); // récupération des indices (i-r,j) du max & sa valeur parmi la ligne à gauche de mat[i][j], en fonction d'un certain coefficient de délétion.
-cell indicesMaxL (int i, int j, int n, int m, double** mat); // récupération des indices (i,j-r) du max & sa valeur parmi la colonne en haut de mat[i][j], en fonction d'un certain coefficient de délétion.
-cell_max get_max(int n, int m,double** mat); // récupération du maximum et comptage de son nombre d'occurence. On stocke ces informations dans cell_max.
+cell indicesMaxK (int i ,int j, int n, int m, double** mat); // rÃ©cupÃ©ration des indices (i-r,j) du max & sa valeur parmi la ligne Ã  gauche de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
+cell indicesMaxL (int i, int j, int n, int m, double** mat); // rÃ©cupÃ©ration des indices (i,j-r) du max & sa valeur parmi la colonne en haut de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
+cell_max get_max(int n, int m,double** mat); // rÃ©cupÃ©ration du maximum et comptage de son nombre d'occurence. On stocke ces informations dans cell_max.
 cell precell (int i, int j, int n, int m, char s1[n], char s2[m], double** mat); // calcul de la cellule d'origine/parent.
 cell_liste traceback (cell c, int n, int m, char s1[n], char s2[m], double** mat); // renvoie le traceback.
 void empiler(cell_liste *pile, cell p); // ajoute une cellule dans la pile qui contient le traceback.                                                                      
 cell depiler (cell_liste *pile); // supprime une cellule dans la pile qui contient le traceback.
-void alignement (cell_liste *chaine, int n, int m, char s1[n], char s2[m]); // affichage des alignements par rapport à notre pile.
+void alignement (cell_liste *chaine, int n, int m, char s1[n], char s2[m]); // affichage des alignements par rapport Ã  notre pile.
 
 
 
@@ -74,48 +73,48 @@ void alignement (cell_liste *chaine, int n, int m, char s1[n], char s2[m]); // a
 
 int main(int argc, char *argv[])
 {
-    if(argc<=1) // vérifier qu'un nom de fichier a été donné.
+    if(argc<=1) // vÃ©rifier qu'un nom de fichier a Ã©tÃ© donnÃ©.
     {
         printf("Nom de fichier manquant.\n");
-        return -1;  // sortir du programme le cas échéant.
+        return -1;  // sortir du programme le cas Ã©chÃ©ant.
     }
     FILE* pf = fopen(argv[1],"rt"); 
-    if(pf==NULL) // vérification de existence du fichier.
+    if(pf==NULL) // vÃ©rification de existence du fichier.
     {
         printf("Erreur dans l'ouverture du fichier.\n");
         exit(1); // forcer la sortie.
     }
 
     char c;
-    int l1=0,l2=0; // on compte le nombre de caractères des chaînes S1 et S2.
+    int l1=0,l2=0; // on compte le nombre de caractÃ¨res des chaÃ®nes S1 et S2.
     while((c=fgetc(pf))!='\n' && c!=EOF)
         l1++;
     while((c=fgetc(pf))!='\n' && c!=EOF)
         l2++;
 
-    rewind(pf); // Le curseur retourne au début du fichier.
+    rewind(pf); // Le curseur retourne au dÃ©but du fichier.
 
-    //on remplit nos 2 chaînes en relisant le fichier.
+    //on remplit nos 2 chaÃ®nes en relisant le fichier.
     char s1[l1+1];
     int i=0;
     while((c=fgetc(pf))!='\n' && c!=EOF)
     {
-        s1[i]=c; // insertion des caractères dans la chaine s1.
+        s1[i]=c; // insertion des caractÃ¨res dans la chaine s1.
         i++;
     }
-    s1[l1]='\0'; // ne pas oublier le caractère de fin de chaine.
+    s1[l1]='\0'; // ne pas oublier le caractÃ¨re de fin de chaine.
 
     char s2[l2+1];
     i=0;
     while((c=fgetc(pf))!='\n' && c!=EOF)
     {
-        s2[i]=c; // insertion des caractères dans la chaine s2.
+        s2[i]=c; // insertion des caractÃ¨res dans la chaine s2.
         i++;
     }
-    s2[l2]='\0'; // ne pas oublier le caractère de fin de chaine.
+    s2[l2]='\0'; // ne pas oublier le caractÃ¨re de fin de chaine.
 
 
-    // on vérifie qu'aucune chaîne n'est vide
+    // on vÃ©rifie qu'aucune chaÃ®ne n'est vide
     if(strcmp(s1,"")==0 || strcmp(s2,"")==0)
     {
         printf("Une chaine est vide.\n");
@@ -124,7 +123,7 @@ int main(int argc, char *argv[])
 
     printf("\n");
     printf("Input :");
-    printf("\nSequence 1 (%d) : %s\nSequence 2 (%d) : %s\n", l1,s1, l2,s2); //on affiche nos 2 chaînes.
+    printf("\nSequence 1 (%d) : %s\nSequence 2 (%d) : %s\n", l1,s1, l2,s2); //on affiche nos 2 chaÃ®nes.
 
     fclose(pf); //fermeture du fichier. 
 
@@ -133,7 +132,7 @@ int main(int argc, char *argv[])
     double ** mat;
     mat = allocation(l1+1,l2+1); // allocation dynamique de notre matrice de notation (l1+1 lignes et l2+1 colonnes).
 
-    // on initialise la première ligne et la première colonne à 0.
+    // on initialise la premiÃ¨re ligne et la premiÃ¨re colonne Ã  0.
     for(int i=0; i<l1+1; i++)
     {
         mat[i][0]=0.0;
@@ -153,24 +152,24 @@ int main(int argc, char *argv[])
 
 /********************************** Calcul du traceback & affichage des alignements ******************************/
     
-    /* parcours de la matrice de notation à la recherche des différentes
+    /* parcours de la matrice de notation Ã  la recherche des diffÃ©rentes
     occurences de la valeur maximale afin d'enclencher le processus
     de traceback */
 
 	cell cMax;
 	for (int i=1; i<l1+1; i++)
 		for (int j=1; j<l2+1; j++)
-			if (mat[i][j] == mc.val_max) // mc.val_max valeur maximale de la matrice stockée dans cell_max.
+			if (mat[i][j] == mc.val_max) // mc.val_max valeur maximale de la matrice stockÃ©e dans cell_max.
 			{
 				cMax.idx = i; cMax.idy = j; // stockage des indices dans la cell cMax.
                 //printf("\nTraceback : \n");
-				cell_liste chaine = traceback(cMax,l1+1,l2+1,s1,s2,mat); // pour chaque occurence du max on empile les coordonées du traceback.
+				cell_liste chaine = traceback(cMax,l1+1,l2+1,s1,s2,mat); // pour chaque occurence du max on empile les coordonÃ©es du traceback.
 				printf("\n");
-				alignement(&chaine,l1+1,l2+1,s1,s2); // on dépile les coordonnées du chemin pour l'affichage des alignements.
+				alignement(&chaine,l1+1,l2+1,s1,s2); // on dÃ©pile les coordonnÃ©es du chemin pour l'affichage des alignements.
 			}
 
-    // Libération de la mémoire de notre matrice (tableau à deux dimension 2).
-    // Libération un à un de tous les tableaux avec une boucle (l2 colonnes) puis libérer le tableau de pointeurs (l1 lignes).
+    // LibÃ©ration de la mÃ©moire de notre matrice (tableau Ã  deux dimension 2).
+    // LibÃ©ration un Ã  un de tous les tableaux avec une boucle (l2 colonnes) puis libÃ©rer le tableau de pointeurs (l1 lignes).
     for (int i=0; i<l1+1; i++) {
         if(l2>0)
             free(mat[i]);
@@ -194,19 +193,19 @@ int main(int argc, char *argv[])
 
 double** allocation(int l1, int l2) // allocation dynamique de notre matrice de notation. 
 {
-    double ** mat; // déclaration d'un tableau de dimension 2 (notre matrice).
+    double ** mat; // dÃ©claration d'un tableau de dimension 2 (notre matrice).
 
     /* Pour allouer le tableau de l1 lignes et l2 colonnes, on commence par allouer un tableau de l1 pointeurs */
     /* on alloue ensuite chacun de ces pointeurs avec l2 double dans une boucle */
 
-    mat = (double**) malloc ((l1+1)*sizeof(double*)); // allocation d'un tableau de l1 pointeurs. Les lignes de notre matrice à deux dimensions.
-    if (mat == NULL) // vérification de existence de la matrice.
+    mat = (double**) malloc ((l1+1)*sizeof(double*)); // allocation d'un tableau de l1 pointeurs. Les lignes de notre matrice Ã  deux dimensions.
+    if (mat == NULL) // vÃ©rification de existence de la matrice.
     {
         printf("Erreur dans la matrice.\n");
         exit(1);
     }
         for (int i=0; i<l1+1; i++) {
-            mat[i] = (double*) malloc ((l2+1)*sizeof(double)); // allocation d'un tableau de l2 double au bout de chaque pointeur. Pour les l1 lignes on créer un tableau de l2 colonnes. 
+            mat[i] = (double*) malloc ((l2+1)*sizeof(double)); // allocation d'un tableau de l2 double au bout de chaque pointeur. Pour les l1 lignes on crÃ©er un tableau de l2 colonnes. 
           if (mat[i] == NULL)                                               
           {
               printf("Erreur dans la matrice.\n");
@@ -216,14 +215,14 @@ double** allocation(int l1, int l2) // allocation dynamique de notre matrice de 
     return mat;
 }
 
-double similarite (char s1, char s2) // renvoie un coefficient de similarité entre deux caractères. 
+double similarite (char s1, char s2) // renvoie un coefficient de similaritÃ© entre deux caractÃ¨res. 
 {
     if (s1==s2)
         return 1.0;
     return -0.33;
 }
 
-double maxQuatrecoeff (double a, double b, double c, double d) // renvoie le coefficient maximal entre 4 valeurs (selon la méthode de calcul de Smith-Waterman).
+double maxQuatrecoeff (double a, double b, double c, double d) // renvoie le coefficient maximal entre 4 valeurs (selon la mÃ©thode de calcul de Smith-Waterman).
 {
     if(a>=b && a>=c && a>=d)
     {
@@ -240,7 +239,7 @@ double maxQuatrecoeff (double a, double b, double c, double d) // renvoie le coe
     return d;
 }
 
-double maximum_K (int i, int j, int n, int m, double** mat) // renvoie le max parmi la ligne gauche de mat[i][j], en fonction d'un certain coefficient de délétion.
+double maximum_K (int i, int j, int n, int m, double** mat) // renvoie le max parmi la ligne gauche de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
 {
     double val, max = 0;
     for (int k=1; k<i; k++)
@@ -252,7 +251,7 @@ double maximum_K (int i, int j, int n, int m, double** mat) // renvoie le max pa
     return max;
 }
 
-double maximum_L (int i, int j, int n, int m, double** mat) // renvoie le max parmi la colonne du haut de mat[i][j], en fonction d'un certain coefficient de délétion.
+double maximum_L (int i, int j, int n, int m, double** mat) // renvoie le max parmi la colonne du haut de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
 {
     double val, max = 0;
     for (int l=1; l<j; l++)
@@ -264,22 +263,22 @@ double maximum_L (int i, int j, int n, int m, double** mat) // renvoie le max pa
     return max;
 }
 
-void FillMatrix (int n, int m, char s1[n], char s2[m], double** mat) // remplit la matrice de similarité.
+void FillMatrix (int n, int m, char s1[n], char s2[m], double** mat) // remplit la matrice de similaritÃ©.
 {
     double a,b,c,d=0;
     for (int i=1; i<n+1; i++)
     {
         for (int j=1; j<m+1; j++)
         {
-            a = mat[i-1][j-1] + similarite (s1[i-1],s2[j-1]); //score de l'alignement ai et bj (% à la diagonale)
+            a = mat[i-1][j-1] + similarite (s1[i-1],s2[j-1]); //score de l'alignement ai et bj (% Ã  la diagonale)
             b = maximum_K(i,j,n,m,mat); //score ligne gauche
             c = maximum_L(i,j,n,m,mat); //score colonne du haut
-            mat[i][j] = maxQuatrecoeff(a,b,c,d); //récupération du score maximum parmi ces 4 valeurs.
+            mat[i][j] = maxQuatrecoeff(a,b,c,d); //rÃ©cupÃ©ration du score maximum parmi ces 4 valeurs.
         }
     }
 }
 
-void ShowMatrix (int n, int m, char s1[n], char s2[m], double** mat) // afficher la matrice de similarité.
+void ShowMatrix (int n, int m, char s1[n], char s2[m], double** mat) // afficher la matrice de similaritÃ©.
 {
     printf("       ");
     for (int j=1; j<m; j++) printf("%c   ",s2[j-1]); //on affiche la chaine S2
@@ -290,7 +289,7 @@ void ShowMatrix (int n, int m, char s1[n], char s2[m], double** mat) // afficher
         for (int j=0; j<m; j++)
         {
 					if(j==0 && i>0)
-						printf("%c ",s1[i-1]); // on affiche la chaine S1 à chaque début de ligne
+						printf("%c ",s1[i-1]); // on affiche la chaine S1 Ã  chaque dÃ©but de ligne
 					else if(j==0 && i==0)
 						printf("  ");
 
@@ -301,7 +300,7 @@ void ShowMatrix (int n, int m, char s1[n], char s2[m], double** mat) // afficher
     printf("\n");
 }
 
-cell_max get_max(int n , int m, double** mat) // récupération du maximum et comptage de son nombre d'occurence. On stocke ces informations dans cell_max.
+cell_max get_max(int n , int m, double** mat) // rÃ©cupÃ©ration du maximum et comptage de son nombre d'occurence. On stocke ces informations dans cell_max.
 {
     cell_max mc;
     int i, j;
@@ -335,9 +334,9 @@ cell_max get_max(int n , int m, double** mat) // récupération du maximum et comp
     return mc;
 }
 
-/********************************************* Processus de traçage et alignement ******************************************/
+/********************************************* Processus de traÃ§age et alignement ******************************************/
 
-cell indicesMaxK (int i,int j, int n,int m, double** mat) // récupération des indices (i-r,j) du max & sa valeur parmi la ligne à gauche de mat[i][j], en fonction d'un certain coefficient de délétion.
+cell indicesMaxK (int i,int j, int n,int m, double** mat) // rÃ©cupÃ©ration des indices (i-r,j) du max & sa valeur parmi la ligne Ã  gauche de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
 {
     cell indices_maxK;
     int r=1;
@@ -361,7 +360,7 @@ cell indicesMaxK (int i,int j, int n,int m, double** mat) // récupération des in
     return indices_maxK;
 }
 
-cell indicesMaxL (int i,int j, int n,int m, double** mat)  // récupération des indices (i,j-r) du max & sa valeur parmi la colonne haute de mat[i][j], en fonction d'un certain coefficient de délétion.
+cell indicesMaxL (int i,int j, int n,int m, double** mat)  // rÃ©cupÃ©ration des indices (i,j-r) du max & sa valeur parmi la colonne haute de mat[i][j], en fonction d'un certain coefficient de dÃ©lÃ©tion.
 {
     cell indices_maxL;
     int r=1;
@@ -388,24 +387,24 @@ cell precell (int i,int j, int n,int m, char s1[n], char s2[m], double** mat) //
 {
     cell origine;
 
-    // recalculer les valeurs qui ont amenées à mat[i][j].
-    double a = mat[i-1][j-1] + similarite(s1[i-1], s2[j-1]); // similarité par rapport à la diagonale.
+    // recalculer les valeurs qui ont amenÃ©es Ã  mat[i][j].
+    double a = mat[i-1][j-1] + similarite(s1[i-1], s2[j-1]); // similaritÃ© par rapport Ã  la diagonale.
     double d = 0;
 
-    cell bb = indicesMaxK(i,j, n,m,mat); // récupération des indices (i-r,j) du maximum de la ligne.
-    cell cc = indicesMaxL(i,j, n,m,mat); // récupération des indices (i,j-r) du maximum de la colonne.
+    cell bb = indicesMaxK(i,j, n,m,mat); // rÃ©cupÃ©ration des indices (i-r,j) du maximum de la ligne.
+    cell cc = indicesMaxL(i,j, n,m,mat); // rÃ©cupÃ©ration des indices (i,j-r) du maximum de la colonne.
 
     double prevscore = maxQuatrecoeff(a, bb.value, cc.value, d); 
 
-    if (prevscore == a) // l'origine est à la diagonale.
+    if (prevscore == a) // l'origine est Ã  la diagonale.
     {
         origine.idx = i-1; 
         origine.idy = j-1;
         origine.value = mat[origine.idx][origine.idy];
     }
-    else if (prevscore == bb.value) // origine se situe dans la ligne à gauche. 
+    else if (prevscore == bb.value) // origine se situe dans la ligne Ã  gauche. 
     {
-        // position à gauche avec un pas de 1.
+        // position Ã  gauche avec un pas de 1.
         origine.idx = bb.idx; // p.idx = i-r;
         origine.idy = bb.idy; // p.idy = j;
         origine.value = mat[origine.idx][origine.idy];
@@ -417,7 +416,7 @@ cell precell (int i,int j, int n,int m, char s1[n], char s2[m], double** mat) //
         origine.idy = cc.idy;  // p.idy = j-r;
         origine.value = mat[origine.idx][origine.idy];
     }
-    else //cas où mon origine vient du 0 (ce qui n'arrive jamais).
+    else //cas oÃ¹ mon origine vient du 0 (ce qui n'arrive jamais).
     {
         origine.idx = 0;
         origine.idy = 0;
@@ -429,27 +428,27 @@ cell precell (int i,int j, int n,int m, char s1[n], char s2[m], double** mat) //
 
 void empiler(cell_liste *pile, cell p) // ajoute une cellule dans la pile qui contient le traceback.
 {
-    path* c = (path*) malloc(sizeof(path)); // création d'un nouvel élément de la cell_liste chainée
-    if(c==NULL) //vérification de l'allocation en mémoire
+    path* c = (path*) malloc(sizeof(path)); // crÃ©ation d'un nouvel Ã©lÃ©ment de la cell_liste chainÃ©e
+    if(c==NULL) //vÃ©rification de l'allocation en mÃ©moire
     {
         printf("Erreur dans l'allocation de la pile !\n");
         exit(1);   
     }
-    c->e = p; // ajout de l'élément à empiler.
-    c->next = pile->tete; // insertion en tête de cell_liste.
-    pile->tete = c; // mise à jour de la tête de cell_liste.
+    c->e = p; // ajout de l'Ã©lÃ©ment Ã  empiler.
+    c->next = pile->tete; // insertion en tÃªte de cell_liste.
+    pile->tete = c; // mise Ã  jour de la tÃªte de cell_liste.
 }
 
 cell_liste traceback (cell c, int n,int m, char s1[n], char s2[m], double** mat) // renvoie le traceback.
 {
     cell_liste chaine;
-    chaine.tete = NULL; // initalisation de la pile à vide.
+    chaine.tete = NULL; // initalisation de la pile Ã  vide.
 
-    while (c.value != 0) // condition de sortie : similarité nulle.
+    while (c.value != 0) // condition de sortie : similaritÃ© nulle.
     {
         empiler(&chaine, c); // on ajoute cette cellule dans la pile.
         //printf("(idx , idy) = ( %d,%d ) ; Valeur =  %.1f\n", c.idx,c.idy, mat[c.idx][c.idy]);
-        c = precell(c.idx,c.idy, n,m,s1,s2,mat); // on calcul le prédecesseur de notre cellule (origine).
+        c = precell(c.idx,c.idy, n,m,s1,s2,mat); // on calcul le prÃ©decesseur de notre cellule (origine).
     }
 
     return chaine;
@@ -458,35 +457,35 @@ cell_liste traceback (cell c, int n,int m, char s1[n], char s2[m], double** mat)
 cell depiler (cell_liste *pile) // supprime une cellule dans la pile qui contient le traceback.
 {
 
-    path* supp_cell = pile->tete; // on récupère la tête de la cell_liste. Mémorisation de l'adresse.
+    path* supp_cell = pile->tete; // on rÃ©cupÃ¨re la tÃªte de la cell_liste. MÃ©morisation de l'adresse.
     if(pile == NULL || pile->tete ==NULL)
     {
         printf("Erreur au niveau de la pile.\n");
         exit(1); // forcer la sortie du programme;
     }
-    cell p = supp_cell->e; // on récuperer les informations de la tête de la pile.
+    cell p = supp_cell->e; // on rÃ©cuperer les informations de la tÃªte de la pile.
     pile->tete = supp_cell->next; // passage au suivant avant destruction.
-    free(supp_cell); // destruction de la cell mémorisée.
+    free(supp_cell); // destruction de la cell mÃ©morisÃ©e.
 
-    return p; // renvoie la cell en tête de cell_liste
+    return p; // renvoie la cell en tÃªte de cell_liste
 }
 
-void alignement(cell_liste *chaine,int n, int m, char s1[n],char s2[m]) // affichage des alignements par rapport à notre pile.
+void alignement(cell_liste *chaine,int n, int m, char s1[n],char s2[m]) // affichage des alignements par rapport Ã  notre pile.
 {
 
     char c1[n+m]; // n+m longueur maximal possible pour un alignement dans le pire des cas.
-    char c2[n+m]; //chaînes de caractères c1 et c2 pour nos 2 alignements.
+    char c2[n+m]; //chaÃ®nes de caractÃ¨res c1 et c2 pour nos 2 alignements.
 	
-    strcpy(c1 , "");  strcpy(c2 , "");  //on initialise à vide nos chaînes. 
+    strcpy(c1 , "");  strcpy(c2 , "");  //on initialise Ã  vide nos chaÃ®nes. 
 
     int d1 = chaine->tete->e.idx; //debut de la comparaison
-    int d2 = chaine->tete->e.idy; // récupération des premières coordonées de la pile.
+    int d2 = chaine->tete->e.idy; // rÃ©cupÃ©ration des premiÃ¨res coordonÃ©es de la pile.
 
     while(chaine->tete!=NULL) // tant que la pile n'est pas vide
     {
-        cell d = depiler(chaine); // on dépile
-        // d.idx et d.idy récupérent les coordonnées de la cellule qui a été retiré.
-        while(d1<d.idx) //si il y a une délétion sur s1 avant l'alignement (d.idx,d.idy)
+        cell d = depiler(chaine); // on dÃ©pile
+        // d.idx et d.idy rÃ©cupÃ©rent les coordonnÃ©es de la cellule qui a Ã©tÃ© retirÃ©.
+        while(d1<d.idx) //si il y a une dÃ©lÃ©tion sur s1 avant l'alignement (d.idx,d.idy)
         {
             char a[2] = {s1[d1-1]};
             strcat(c1,a);
@@ -494,7 +493,7 @@ void alignement(cell_liste *chaine,int n, int m, char s1[n],char s2[m]) // affic
             d1++;
         }
 
-        while(d2<d.idy) //si il y a une délétion sur s2 avant l'alignement (d.idx,d.idy)
+        while(d2<d.idy) //si il y a une dÃ©lÃ©tion sur s2 avant l'alignement (d.idx,d.idy)
         {
             char b[2] = {s2[d2-1]};
             strcat(c2, b);
